@@ -2,6 +2,7 @@ package mx.com.fi.proyecto.dominio;
 
 public class Boleta {
 	 private int idBoleta;
+	 private String codigoBoleta;
 	 private String procesoElectoral;
 	 private String tipoEleccion;
 	 private int entidadFederativa;
@@ -15,9 +16,10 @@ public class Boleta {
 		super();
 		this.idBoleta = idBoleta;
 	}
-	public Boleta(String procesoElectoral, String tipoEleccion, int entidadFederativa, int municipio,
+	public Boleta(String codigoBoleta,String procesoElectoral, String tipoEleccion, int entidadFederativa, int municipio,
 			String distritoElectoral, String periodo) {
 		super();
+		this.codigoBoleta=codigoBoleta;
 		this.procesoElectoral = procesoElectoral;
 		this.tipoEleccion = tipoEleccion;
 		this.entidadFederativa = entidadFederativa;
@@ -25,9 +27,10 @@ public class Boleta {
 		this.distritoElectoral = distritoElectoral;
 		this.periodo = periodo;
 	}
-	public Boleta(int idBoleta, String procesoElectoral, String tipoEleccion, int entidadFederativa, int municipio,
+	public Boleta(int idBoleta,String codigoBoleta, String procesoElectoral, String tipoEleccion, int entidadFederativa, int municipio,
 			String distritoElectoral, String periodo) {
 		super();
+		this.codigoBoleta=codigoBoleta;
 		this.idBoleta = idBoleta;
 		this.procesoElectoral = procesoElectoral;
 		this.tipoEleccion = tipoEleccion;
@@ -41,6 +44,14 @@ public class Boleta {
 	}
 	public void setIdBoleta(int idBoleta) {
 		this.idBoleta = idBoleta;
+	}
+	
+	
+	public String getCodigoBoleta() {
+		return codigoBoleta;
+	}
+	public void setCodigoBoleta(String codigoBoleta) {
+		this.codigoBoleta = codigoBoleta;
 	}
 	public String getProcesoElectoral() {
 		return procesoElectoral;
@@ -80,10 +91,12 @@ public class Boleta {
 	}
 	@Override
 	public String toString() {
-		return "Boleta [idBoleta=" + idBoleta + ", procesoElectoral=" + procesoElectoral + ", tipoEleccion="
-				+ tipoEleccion + ", entidadFederativa=" + entidadFederativa + ", municipio=" + municipio
-				+ ", distritoElectoral=" + distritoElectoral + ", periodo=" + periodo + "]";
+		return "Boleta [idBoleta=" + idBoleta + ", codigoBoleta=" + codigoBoleta + ", procesoElectoral="
+				+ procesoElectoral + ", tipoEleccion=" + tipoEleccion + ", entidadFederativa=" + entidadFederativa
+				+ ", municipio=" + municipio + ", distritoElectoral=" + distritoElectoral + ", periodo=" + periodo
+				+ "]";
 	}
+	
 	 
 	
 	

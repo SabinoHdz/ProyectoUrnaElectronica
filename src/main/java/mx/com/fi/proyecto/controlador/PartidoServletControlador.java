@@ -74,12 +74,13 @@ public class PartidoServletControlador extends HttpServlet {
 	
 	private void insertarPartido(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String nombrePartido=request.getParameter("partidoPolitico");
+		String abreviacion=request.getParameter("abreviacion");
 		String nombreImagen=request.getParameter("nombreImagen");
 		Part part=request.getPart("emblema");
 		InputStream emblema=part.getInputStream();
 		//String estado=request.getParameter("estado");
 		//int iEstado=Integer.parseInt(estado);
-		Partido partidoPolitico=new Partido(nombrePartido, nombreImagen, "abrev", nombreImagen);
+		Partido partidoPolitico=new Partido(nombrePartido, nombreImagen, abreviacion, nombreImagen);
 		PartidoDao insertPartidoDao=new PartidoDao();
 		insertPartidoDao.insertarPartido(partidoPolitico);
 		

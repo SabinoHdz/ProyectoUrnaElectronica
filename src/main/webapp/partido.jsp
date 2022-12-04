@@ -47,6 +47,10 @@
 		</nav>
 	</header>
 	<!-- Listar Partidos -->
+	<jsp:include page="/WEB-INF/paginas/componentes/botonAgregar.jsp">  
+ <jsp:param name="btnTitulo" value="Agregar Partido"/>
+  <jsp:param name="idName" value="Partido"/>   
+ </jsp:include>
 	
 	<section id="listaUrnas" class="py-4 mb-4 bg-light">
 		<div class="container">
@@ -64,8 +68,6 @@
 						      <th scope="col">Nombre del Partido Politico</th>
 						       <th scope="col">Abreviacion</th>
 						      <th scope="col">Emblema</th>
-						      <th scope="col">Edit</th>
-						      <th scope="col">Del</th>
 						    </tr>
 						</thead>
 						<tbody>
@@ -99,14 +101,7 @@
 								<td><%=partido.getNombrePartido() %></td>
 								<td><%=partido.getAbrev() %></td>
 								<td><img alt="<%=partido.getNombreImagen()%>" src="${pageContext.request.contextPath}/imagenes/<%=partido.getEmblema()%>" width="120px" height="120px">  </td>
-								<td>
-									<a href="${pageContext.request.contextPath}/indexServletControlador?accion=editar&idUrna=<%=partido.getIdPartido()%>"  class="btn btn-secondary">
-											 <i class="fas fa-angle-double-right"></i> Editar </a>
-								</td>
-								<td>
-									<a href="${pageContext.request.contextPath}/indexServletControlador?accion=eliminar&idUrna=<%=partido.getIdPartido()%>"  class="btn btn-danger">
-										<i class="fa-solid fa-trash"></i> Eliminar </a>
-								</td>
+
 							</tr>	
 							
 							
@@ -120,14 +115,11 @@
 	</section>
 	<!-- Fin de Mostrar Partidos -->
 	
-	
+ 
+		
 	<!-- Seccion del modal agregarUrna -->
-	<jsp:include page="/WEB-INF/paginas/partido/agregarPartido.jsp"/>  
-	
-<jsp:include page="/WEB-INF/paginas/componentes/botonAgregar.jsp">  
- <jsp:param name="btnTitulo" value="Agregar Partido"/>
-  <jsp:param name="idName" value="Partido"/>   
- </jsp:include>
+	<jsp:include page="/WEB-INF/paginas/partido/agregarPartido.jsp"/> 
+
 	
 	<script src="https://kit.fontawesome.com/60e65bec08.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

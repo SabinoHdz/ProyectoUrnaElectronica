@@ -9,9 +9,14 @@
         	<form action="PartidoServletControlador" method="POST" enctype="multipart/form-data" class="was-validated">
         		<div class="modal-body">
         		 <div class="mb-3 form-group">
-				    <label for="partidoPolitico" class="form-label">Nomble del Partido Político</label>
+				    <label for="partidoPolitico" class="form-label">Nomble del Partido Político:</label>
 				    <input type="text" class="form-control" id="partidoPolitico" name="partidoPolitico" required="required" placeholder="Nombre del Partido" autocomplete="off">
 				 </div>
+				 <div class="mb-3 form-group">
+				    <label for="abreviacion" class="form-label">Abreviación del partido político:</label>
+				    <input type="text" class="form-control" id="abreviacion" name="abreviacion" placeholder="Nombre del Partido" required="required" autocomplete="off">
+				  </div>
+				  
 				  <div class="mb-3 form-group">
 				    <label for="nombreImagen" class="form-label">Nombre de la imagen</label>
 				    <input type="text" class="form-control" id="nombreImagen" name="nombreImagen" placeholder="Nombre del Partido" required="required" autocomplete="off">

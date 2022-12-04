@@ -24,6 +24,7 @@
 						<thead class="thead-dark">
 							<tr>
 						      <th scope="col">#</th>
+						       <th scope="col">Código de Boleta</th>
 						      <th scope="col">Proceso Electoral</th>
 						      <th scope="col">Tipo de Elección</th>
 						      <th scope="col">Entidad Federativa </th>
@@ -68,6 +69,7 @@
 							%>	
 							<tr>
 								<td><%=boleta.getIdBoleta() %></td>
+								<td><%=boleta.getCodigoBoleta()%></td>
 								<td><%=boleta.getProcesoElectoral()%></td>
 								<td><%=boleta.getTipoEleccion()%></td>
 								<td><%=estadoSearch.getNombre()%></td>
@@ -75,11 +77,11 @@
 								<td><%=boleta.getDistritoElectoral()%></td>
 								<td><%=boleta.getPeriodo()%></td>
 								<td>
-									<a href="${pageContext.request.contextPath}/BoletaServletControlador?accion=editar&idBoleta=<%=boleta.getIdBoleta()%>"  class="btn btn-secondary">
-											 <i class="fas fa-angle-double-right"></i> Editar </a>
+									<a href="${pageContext.request.contextPath}/BoletaServletControlador?accion=mostrar&idBoleta=<%=boleta.getIdBoleta()%>"  class="btn btn-secondary">
+											 <i class="fas fa-angle-double-right"></i> Mostrar Boleta </a>
 								</td>
 								<td>
-									<a href="${pageContext.request.contextPath}/CandidatoServletControlador?accion=eliminar&idBoleta=<%=boleta.getIdBoleta()%>"  class="btn btn-danger">
+									<a href="${pageContext.request.contextPath}/BoletaServletControlador?accion=eliminar&idBoleta=<%=boleta.getIdBoleta()%>"  class="btn btn-danger">
 										<i class="fa-solid fa-trash"></i> Eliminar </a>
 								</td>
 							</tr>	

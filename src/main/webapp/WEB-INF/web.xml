@@ -95,4 +95,14 @@
     <servlet-name>MunicipioServletControlador</servlet-name>
     <url-pattern>/MunicipioServletControlador</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UsuarioServletControlador</display-name>
+    <servlet-name>UsuarioServletControlador</servlet-name>
+    <servlet-class>mx.com.fi.proyecto.controlador.UsuarioServletControlador</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsuarioServletControlador</servlet-name>
+    <url-pattern>/UsuarioServletControlador</url-pattern>
+  </servlet-mapping>
 </web-app>

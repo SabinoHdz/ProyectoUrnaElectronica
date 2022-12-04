@@ -14,7 +14,7 @@ import mx.com.fi.proyecto.interfaz.PostulacionInterfaz;
 public class PostulacionDao implements PostulacionInterfaz{
 	private static final String SQL_SELECT_GENERAL = "SELECT IdPostulacion,IdCandidato,IdSuplente,IdPartido,TipoPostulacion FROM postulacion";
 
-	private static final String SQL_SELECT_BY_ID = "SELECT IdCandidato,nombre,cargo,edad,sexo FROM candidato WHERE IdCandidato= ? limit 1";
+	private static final String SQL_SELECT_BY_ID = "SELECT IdPostulacion,IdCandidato,IdSuplente,IdPartido,TipoPostulacion FROM postulacion WHERE IdPostulacion= ? limit 1";
 	private static final String SQL_INSERT = "INSERT INTO postulacion(IdCandidato,IdSuplente,IdPartido,TipoPostulacion) VALUES (?,?,?,?)";
 	private static final String SQL_UPDATE = "UPDATE candidato SET nombre=?,cargo=?,edad=?,sexo=? WHERE IdCandidato=?";
 	private static final String SQL_DELETE = "DELETE FROM postulacion WHERE IdPostulacion=?";
@@ -83,8 +83,39 @@ public class PostulacionDao implements PostulacionInterfaz{
 
 	@Override
 	public Postulacion buscarPostulacion(Postulacion postulacion) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn =Conexion.getConexion();
+			
+			stmt = conn.prepareStatement(SQL_SELECT_BY_ID);
+			System.out.println("prepare: "+stmt);
+			stmt.setInt(1,  postulacion.getIdPostulacion());
+			//System.out.println(stmt);
+			//System.out.println("prepare2: "+stmt);
+			rs = stmt.executeQuery();
+			//System.out.println("rs: "+rs);
+			while (rs.next()) {
+				postulacion.setIdPostulacion(rs.getInt("IdPostulacion"));
+				postulacion.setIdCandidato(rs.getInt("IdCandidato"));
+				postulacion.setIdSuplente(rs.getInt("IdSuplente"));
+				postulacion.setIdPartido(rs.getInt("IdPartido"));
+				postulacion.setTipoPostulacion(rs.getString("TipoPostulacion"));
+			}
+
+			conn.close();
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace(System.out);
+		} finally {
+			Conexion.close(stmt);
+			Conexion.close(rs);
+			Conexion.close(this.getConexion());
+		}
+		return postulacion;
 	}
 
 	@Override

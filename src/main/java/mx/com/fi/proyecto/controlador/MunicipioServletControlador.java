@@ -77,5 +77,4 @@ public class MunicipioServletControlador extends HttpServlet {
     	out.flush();
     }
     
-
 }

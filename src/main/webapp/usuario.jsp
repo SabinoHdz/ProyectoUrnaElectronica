@@ -52,22 +52,17 @@
 	</header>
 
 
-	<jsp:include page="/WEB-INF/paginas/componentes/botonesAccion.jsp">
-		<jsp:param name="btnTituloPrimary" value="Agregar Boleta" />
-		<jsp:param name="idNamePrimary" value="Boleta" />
-		<jsp:param name="btnTituloSecond" value="Agregar postulante a boleta" />
-		<jsp:param name="idNameSecond" value="PostulanteBoleta" />
+	<jsp:include page="/WEB-INF/paginas/componentes/botonAgregar.jsp">
+		<jsp:param name="btnTitulo" value="Agregar Usuario" />
+		<jsp:param name="idName" value="Usuario" />
 	</jsp:include>
-	
 
 
-	<!-- Agregar boletas -->
-	<jsp:include page="/WEB-INF/paginas/boleta/agregarBoleta.jsp" />
-	<!-- Agregar boletas -->
-	<jsp:include page="/WEB-INF/paginas/boleta/agregarPartidosBoleta.jsp" />
+	<!-- Agregar Usuarios -->
+	<jsp:include page="/WEB-INF/paginas/usuario/agregarUsuario.jsp" />
 	
-	<!-- Mostrar boletas -->
-	<jsp:include page="/WEB-INF/paginas/boleta/mostrarBoletas.jsp"/>  
+	<!-- Mostrar Usuarios -->
+	<jsp:include page="/WEB-INF/paginas/usuario/mostrarUsuarios.jsp"/>  
 	<script src="https://kit.fontawesome.com/60e65bec08.js"
 		crossorigin="anonymous"></script>
 	<script
@@ -80,57 +75,7 @@
 		crossorigin="anonymous"></script>
 	<script type="text/javascript" src="./javascript/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="./javascript/mostrarEstados.js"></script>
-	<script type="text/javascript">
-	$(function(){
-        //evento change parececido al onchange de javascript que cambia al seleccionar los Paises
-    $("#estado").change(function(){
-    	var idEstadoVar=$(this).val();
-    	var fdLog = new FormData();
-    	fdLog.append("estado", idEstadoVar);
-    	$.ajax({
-    		url: "MunicipioServletControlador",
-    		type: "POST",
-    		dataType: "json",
-    		data: fdLog,
-    		error: (err) => {
-    			console.log(
-    				"AJAX error in request: " +
-    				JSON.stringify(err, null, 2)
-    			);
-    			// mostrar_alerta(
-    			//   "AJAX error in request: " +
-    			//     JSON.stringify(err, null, 2)
-    			// );
-    	
-    			// btnLogin.disabled = false;
-    			// btnLogin.innerHTML = '<i class="fas fa-paste"></i>Login';
-    		},
-    		processData: false,
-    		contentType: false,
-    		cache: false,
-    		success: function(dataresponse) {
-    			console.log(dataresponse);
-    			var  municipios=document.querySelector("#municipio");
-    			var sHTML="";
-    			console.log(dataresponse);
-    			for(municipio in dataresponse){
-    				sHTML+="<option value="+dataresponse[municipio].idMunicipio+">"+dataresponse[municipio].nombre+"</option>";
-    				console.log("id:"+dataresponse[municipio].idMunicipio +" , " + "nombre:"+dataresponse[municipio].nombre);
-    			}
-    			
-    			municipios.innerHTML=sHTML;
-    		},
-    	});
-    	
-    });
-    //funcion onchange para boleta
-      $("#Boleta").change(function(){
-    	  
-    	  var idBoleta=$(this).val();
-    	  alert(idBoleta);
-      });
-    
-});
-	</script>
+	
+
 </body>
 </html>
