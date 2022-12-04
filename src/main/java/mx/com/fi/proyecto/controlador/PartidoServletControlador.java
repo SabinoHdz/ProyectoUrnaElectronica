@@ -2,6 +2,7 @@ package mx.com.fi.proyecto.controlador;
 
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,13 +13,26 @@ import mx.com.fi.proyecto.dao.UrnaDao;
 import mx.com.fi.proyecto.dominio.Partido;
 import mx.com.fi.proyecto.dominio.Urna;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 
 /**
  * Servlet implementation class PartidoServletControlador
  */
+@MultipartConfig
 public class PartidoServletControlador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -59,16 +73,16 @@ public class PartidoServletControlador extends HttpServlet {
 			switch (accion) {
 			case "insertar": 
 				insertarPartido(request, response);
-				//doGet(request, response);
+				doGet(request, response);
 				break;
 			default:
-				//doGet(request, response);
+				doGet(request, response);
 				break;
 				
 			}
 			
 		}else {
-			//doGet(request, response);
+			doGet(request, response);
 		}
 	}
 	
@@ -76,15 +90,26 @@ public class PartidoServletControlador extends HttpServlet {
 		String nombrePartido=request.getParameter("partidoPolitico");
 		String abreviacion=request.getParameter("abreviacion");
 		String nombreImagen=request.getParameter("nombreImagen");
-		Part part=request.getPart("emblema");
-		InputStream emblema=part.getInputStream();
+		//Part part=request.getPart("emblema");
+		//InputStream emblema=part.getInputStream();
 		//String estado=request.getParameter("estado");
 		//int iEstado=Integer.parseInt(estado);
-		Partido partidoPolitico=new Partido(nombrePartido, nombreImagen, abreviacion, nombreImagen);
+		Part archivo = request.getPart("emblema");
+	    String fileName = Paths.get(archivo.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+	    
+	    String pathOrigin = request.getServletContext().getRealPath("/imagenes/");
+	  	
+	  	//out.print("<p>Path origin: "+pathOrigin+"</p>");
+	  	File file = new File(pathOrigin , fileName);
+	  	
+	  	try(InputStream input=archivo.getInputStream()){
+            Files.copy(input, file.toPath(),StandardCopyOption.REPLACE_EXISTING);
+        }
+	    
+		//System.out.println(fileName);
+		Partido partidoPolitico=new Partido(nombrePartido, nombreImagen, abreviacion, fileName);
 		PartidoDao insertPartidoDao=new PartidoDao();
 		insertPartidoDao.insertarPartido(partidoPolitico);
-		
-
 	}
 
 }

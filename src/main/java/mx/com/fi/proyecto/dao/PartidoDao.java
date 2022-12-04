@@ -17,7 +17,7 @@ import mx.com.fi.proyecto.interfaz.PartidoInterfaz;
 public class PartidoDao implements PartidoInterfaz {
 	private static final String SQL_SELECT = "SELECT IdPartido,nombrePartido,nombreImagen,abrev,emblema FROM partido WHERE bHabilitado=1";
 	private static final String SQL_SELECT_BY_ID = "SELECT IdPartido,nombrePartido,nombreImagen,abrev,emblema FROM partido WHERE IdPartido=? limit 1";
-	private static final String SQL_INSERT = "INSERT INTO partido(nombrePartido,nombreImagen,emblema) VALUES (?,?,?)";
+	private static final String SQL_INSERT = "INSERT INTO partido(nombrePartido,nombreImagen,abrev,emblema) VALUES (?,?,?,?)";
 	private static final String SQL_UPDATE = "UPDATE partido SET nombrePartido=?,nombreImagen=?,emblema=? WHERE IdPartido=?";
 	private static final String SQL_DELETE = "DELETE FROM partido WHERE IdPartido=?";
 	private  Connection conexion;
@@ -134,7 +134,8 @@ public class PartidoDao implements PartidoInterfaz {
 			psmt = conn.prepareStatement(SQL_INSERT);
 			psmt.setString(1, partido.getNombrePartido());
 			psmt.setString(2, partido.getNombreImagen());
-			psmt.setString(3, partido.getEmblema());
+			psmt.setString(3, partido.getAbrev());
+			psmt.setString(4, partido.getEmblema());
 
 			rows = psmt.executeUpdate();
 

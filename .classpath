@@ -15,5 +15,7 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/Users/sakur/Documents/Universidad/Doceavo Semestre/Diseño de Sistemas/jar_files/mysql-connector-java-8.0.30.jar"/>
 	<classpathentry kind="lib" path="C:/Users/sakur/Documents/Universidad/Doceavo Semestre/Diseño de Sistemas/jar_filesdbcp2/commons-dbcp2-2.3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sakur/Documents/Universidad/Doceavo Semestre/Diseño de Sistemas/commons-fileupload-1.3.jar/commons-fileupload-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sakur/Documents/Universidad/Doceavo Semestre/Diseño de Sistemas/org.apache.commons.io.jar/org.apache.commons.io.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
