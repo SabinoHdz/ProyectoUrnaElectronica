@@ -27,10 +27,6 @@
 						<li class="nav-item"><a class="nav-link" aria-current="page"
 							href="${pageContext.request.contextPath}/BoletaServletControlador">Boletas</a></li>
 						<li class="nav-item"><a class="nav-link" aria-current="page"
-							href="${pageContext.request.contextPath}/CasillaServletControlador">Casillas</a></li>
-						<li class="nav-item"><a class="nav-link" aria-current="page"
-							href="${pageContext.request.contextPath}/UrnaServletControlador">Urnas</a></li>
-						<li class="nav-item"><a class="nav-link" aria-current="page"
 							href="${pageContext.request.contextPath}/PostulacionServletControlador">Postulación</a></li>
 						<li class="nav-item"><a class="nav-link active" aria-current="page"
 							href="${pageContext.request.contextPath}/CandidatoServletControlador">Candidatos</a></li>
